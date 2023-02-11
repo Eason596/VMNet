@@ -7,7 +7,7 @@ import torch
 def get_dataloader(root, transform, batch_size=1, num_workers=8, pin_memory=True, drop_last=True):
     img_list = [os.path.join(root, 'img', i) for i in os.listdir(os.path.join(root, 'img'))]
     mask_list = [i.replace('img', 'mask') for i in img_list]
-    data = [{'img': i, 'mask':m} for i, m in zip(img_list, mask_list)]
+    data = [{'img': i, 'mask': m} for i, m in zip(img_list, mask_list)]
     dataset = Dataset(data=data, transform=transform)
     dataloader = DataLoader(dataset, num_workers=num_workers, batch_size=batch_size, pin_memory=pin_memory, drop_last=drop_last)
     return dataloader
