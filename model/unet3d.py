@@ -76,6 +76,8 @@ class UNet3D(nn.Module):
         return x
 
 
+
+
 if __name__ == '__main__':
     cfg = {
         'in_channels': 1,
@@ -83,6 +85,10 @@ if __name__ == '__main__':
     }
     device = torch.device('cuda:1')
     model = UNet3D(cfg).to(device)
-    x = torch.randn((2, 1, 128, 128, 128)).to(device)
-    print(model(x).shape)
+    x = torch.randn((1, 1, 1142, 1142, 1142)).to(device)
+    with torch.no_grad():
+        print(model(x).shape)
+    # model.eval()
+    # print(slide_inference(model, x, device).shape)
     # torchsummary.summary(model, (3, 512, 512, 8), 1, 'cuda')
+

@@ -1,0 +1,31 @@
+# 数据集相关配置
+dataset_name: 'parse2022'
+
+# 模型相关配置
+model_name: 'unet3d'
+in_channels: 1
+num_classes: 1
+
+# 训练相关配置
+epoch: 200
+lr: 0.0001
+val_step: 10
+log_save_path: 'train_result/unet3d_parse2022'
+resume: False
+load_checkpoint_from: 
+
+batch_size: 1 # 当数据增强使用RandCropByPosNegLabeld时，实际batch_size为batch_size*num_samples
+seed: 2023
+device: 'cuda:1'
+num_workers: 8
+iters_to_accumulate: 8
+slide_inference: True
+slide_crop_size: (160, 160, 160)
+
+
+loss_mode: 3
+lr_scheduler: 1
+optimizer: 1
+
+
+
